@@ -10,11 +10,11 @@ export default new Router({
             redirect: '/login'
         },
         {
-            path: '/readme',
+            path: '/home',
             component: resolve => require(['../components/common/Home.vue'], resolve),
             children:[
                 {
-                    path: '/',
+                    path: '/readme',
                     component: resolve => require(['../components/page/Readme.vue'], resolve)
                 },
                 {
