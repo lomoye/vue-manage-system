@@ -34,7 +34,7 @@
 
             getUsername() {
                 let self = this;
-                this.$axios.get('/user')
+                this.$axios.get('/api/user')
                     .then(function (response) {
                         console.log(response.data.name);
                         self.name = response.data.name;

@@ -18,12 +18,12 @@ export default new Router({
                     component: resolve => require(['../components/page/Readme.vue'], resolve)
                 },
                 {
-                    path: '/topic',
-                    component: resolve => require(['../components/page/Login.vue'], resolve)
+                    path: '/item',
+                    component: resolve => require(['../components/business/ItemList.vue'], resolve)
                 },
                 {
                     path: '/chart',
-                    component: resolve => require(['../components/page/Readme.vue'], resolve)
+                    component: resolve => require(['../components/business/Calculator.vue'], resolve)
                 }
             ]
         },

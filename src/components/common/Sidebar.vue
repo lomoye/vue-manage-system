@@ -35,8 +35,8 @@
                         title: '日报',
                         subs: [
                             {
-                                index: 'topic',
-                                title: '主题'
+                                index: 'item',
+                                title: '项目'
                             },
                             {
                                 index: 'chart',
