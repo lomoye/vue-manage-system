@@ -6,8 +6,8 @@
             </el-col>
         </el-row>
         <el-row>
-            <el-col :span="24">
-                <textarea class="grid-content">{{ formulaData }}</textarea>
+            <el-col :span="24" >
+                <div class="grid-content" v-model="formulaData" contenteditable="true"><img src="https://www.baidu.com/img/bd_logo1.png"/>{{ showFormulaData }}</div>
 
             </el-col>
         </el-row>
@@ -24,16 +24,25 @@
                 formulas: [
                     "log", "sin", "cos", "tan"
                 ],
-                formulaData: ""
+                formulaData: "",
+
+                showFormulaData: ""
             }
         },
 
         methods: {
             printFormula(formula) {
-                console.log(formula);
                 this.formulaData += formula;
             }
+        },
+
+        watch: {
+            formulaData: function () {
+                console.log(this.formulaData);
+                this.showFormulaData = this.formulaData;
+            }
         }
+
 
     }
 </script>
@@ -42,13 +51,6 @@
     .grid-content {
         border: 1px solid #e0e0e0;
         min-height: 221px;
-    }
-
-    textarea {
-        width: 600px;
-        height: 200px;
-        max-width: 600px;
-        max-height: 200px;
     }
 
 </style>
