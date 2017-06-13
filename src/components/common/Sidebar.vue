@@ -35,11 +35,11 @@
                         title: '日报',
                         subs: [
                             {
-                                index: 'baseform',
+                                index: 'topic',
                                 title: '主题'
                             },
                             {
-                                index: 'vueeditor',
+                                index: 'chart',
                                 title: '报表'
                             }
                         ]

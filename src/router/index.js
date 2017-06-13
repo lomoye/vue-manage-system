@@ -16,6 +16,14 @@ export default new Router({
                 {
                     path: '/readme',
                     component: resolve => require(['../components/page/Readme.vue'], resolve)
+                },
+                {
+                    path: '/topic',
+                    component: resolve => require(['../components/page/Login.vue'], resolve)
+                },
+                {
+                    path: '/chart',
+                    component: resolve => require(['../components/page/Readme.vue'], resolve)
                 }
             ]
         },
