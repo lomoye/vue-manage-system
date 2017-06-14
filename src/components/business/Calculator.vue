@@ -2,13 +2,12 @@
     <div id="main_panel">
         <el-row>
             <el-col :span="24">
-                <el-button v-for="formula in formulas" @click="printFormula(formula)">{{ formula }}</el-button>
+                <el-button v-for="formula in formulas" :key="formula" @click="printFormula(formula)">{{ formula }}</el-button>
             </el-col>
         </el-row>
         <el-row>
             <el-col :span="24" >
-                <div class="grid-content" v-model="formulaData" contenteditable="true"><img src="https://www.baidu.com/img/bd_logo1.png"/>{{ showFormulaData }}</div>
-
+                <div class="grid-content" contenteditable="true" v-text="formulaData" @input="formulaData = $event.target.innerText"><img src="https://www.baidu.com/img/bd_logo1.png"/>{{ showFormulaData }}</div>
             </el-col>
         </el-row>
     </div>
