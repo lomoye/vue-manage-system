@@ -1,29 +1,52 @@
 <template>
-    <el-row>
-        <el-col :span="6">
-            <div class="grid-content">
-                <a href="javascript:" class="empty"><span class="icon-plus"></span><span
-                    class="icon-plus-tips"></span></a>
-            </div>
-        </el-col>
-    </el-row>
+    <div>
+        <el-row>
+            <el-col span="7">
+                <item>
+                    <span class="icon-plus" slot="center"></span>
+                </item>
+            </el-col>
 
+            <el-col span="7" offset="1" v-for="o in items" :key="o.theme">
+                <item>
+                    <h1 class="theme" slot="center">{{ o.theme }}</h1>
+                </item>
+            </el-col>
+
+        </el-row>
+
+
+
+    </div>
 </template>
 
+<script>
+    import item from './Item.vue';
+    export default {
+        data: function () {
+            return {
+                items : [
+                    {
+                        theme: "减肥"
+                    },
+                    {
+                        theme: "美食"
+                    }
+                ]
+            }
+        },
+        components: {
+            item
+        }
+    }
+</script>
+
 <style scoped>
-    .grid-content {
-        border: 1px solid #e0e0e0;
-        min-height: 221px;
-    }
 
-    .grid-content:hover {
-        border: 1px solid black;
-    }
-
-    a.empty {
-        display: block;
-        height: 221px;
-        text-align: center;
+    .theme {
+        display: inline-block;
+        position: relative;
+        margin-top: 70px;
     }
 
     .icon-plus {
@@ -63,5 +86,4 @@
         background-color: #fff;
         border-radius: 1px;
     }
-
 </style>
