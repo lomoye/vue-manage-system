@@ -5,12 +5,12 @@
                 <template v-if="item.subs">
                     <el-submenu :index="item.index">
                         <template slot="title"><i :class="item.icon"></i>{{ item.title }}</template>
-                        <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">{{ subItem.title }}
+                        <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index" :route="subItem.route">{{ subItem.title }}
                         </el-menu-item>
                     </el-submenu>
                 </template>
                 <template v-else>
-                    <el-menu-item :index="item.index">
+                    <el-menu-item :index="item.index" :route="item.route">
                         <i :class="item.icon"></i>{{ item.title }}
                     </el-menu-item>
                 </template>
@@ -27,6 +27,7 @@
                     {
                         icon: 'el-icon-setting',
                         index: 'readme',
+                        route: {path: '/readme'},
                         title: '自述'
                     },
                     {
@@ -35,11 +36,13 @@
                         title: '日报',
                         subs: [
                             {
-                                index: 'item',
+                                index: 'itemList',
+                                route: {path: '/itemList'},
                                 title: '项目'
                             },
                             {
                                 index: 'chart',
+                                route: {path: '/chart'},
                                 title: '报表'
                             }
                         ]
@@ -49,7 +52,7 @@
         },
         computed:{
             onRoutes(){
-                return this.$route.path.replace('/','');
+                return this.$route.path.split("/")[1];
             }
         }
     }

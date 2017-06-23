@@ -18,8 +18,12 @@ export default new Router({
                     component: resolve => require(['../components/page/Readme.vue'], resolve)
                 },
                 {
-                    path: '/item',
+                    path: '/itemList',
                     component: resolve => require(['../components/business/ItemList.vue'], resolve)
+                },
+                {
+                    path: '/itemList/itemRecordForm',
+                    component: resolve => require(['../components/business/ItemRecordForm.vue'], resolve)
                 },
                 {
                     path: '/chart',

@@ -1,40 +1,69 @@
 <template>
     <div>
         <el-row>
-            <el-col span="7">
+            <el-col :span="7" class="item">
                 <item>
                     <span class="icon-plus" slot="center"></span>
                 </item>
             </el-col>
 
-            <el-col span="7" offset="1" v-for="o in items" :key="o.theme">
-                <item>
+
+            <el-col :span="7" :offset="index % 3 == 2 ? 0 : 1" v-for="(o, index) in items" :key="o.theme" class="item">
+
+                <item @click.native="routeTo">
                     <h1 class="theme" slot="center">{{ o.theme }}</h1>
+
                 </item>
             </el-col>
 
-        </el-row>
 
+
+        </el-row>
 
 
     </div>
 </template>
 
 <script>
-    import item from './Item.vue';
+    import item from './Item';
     export default {
-        data: function () {
+        data() {
             return {
-                items : [
+                items: [
                     {
                         theme: "减肥"
                     },
                     {
                         theme: "美食"
+                    },
+                    {
+                        theme: "运动"
+                    },
+                    {
+                        theme: "旅游"
+                    },
+                    {
+                        theme: "穿衣"
+                    },
+                    {
+                        theme: "编码"
+                    },
+                    {
+                        theme: "电影"
+                    },
+                    {
+                        theme: "图书"
                     }
                 ]
             }
         },
+
+        methods: {
+            routeTo() {
+                this.$router.push("/itemList/itemRecordForm");
+            }
+        },
+
         components: {
             item
         }
@@ -43,10 +72,15 @@
 
 <style scoped>
 
+    .item {
+        margin-bottom: 20px;
+    }
+
     .theme {
         display: inline-block;
         position: relative;
         margin-top: 70px;
+        color: #242424;
     }
 
     .icon-plus {
