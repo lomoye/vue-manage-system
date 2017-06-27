@@ -8,10 +8,10 @@
             </el-col>
 
 
-            <el-col :span="7" :offset="index % 3 == 2 ? 0 : 1" v-for="(o, index) in items" :key="o.theme" class="item">
+            <el-col :span="7" :offset="index % 3 == 2 ? 0 : 1" v-for="(o, index) in items" :key="o.name" class="item">
 
                 <item @click.native="routeTo">
-                    <h1 class="theme" slot="center">{{ o.theme }}</h1>
+                    <h1 class="theme" slot="center">{{ o.name }}</h1>
 
                 </item>
             </el-col>
@@ -29,38 +29,30 @@
     export default {
         data() {
             return {
-                items: [
-                    {
-                        theme: "减肥"
-                    },
-                    {
-                        theme: "美食"
-                    },
-                    {
-                        theme: "运动"
-                    },
-                    {
-                        theme: "旅游"
-                    },
-                    {
-                        theme: "穿衣"
-                    },
-                    {
-                        theme: "编码"
-                    },
-                    {
-                        theme: "电影"
-                    },
-                    {
-                        theme: "图书"
-                    }
-                ]
+                items: []
             }
+        },
+
+        created: function () {
+            this.listItems();
         },
 
         methods: {
             routeTo() {
                 this.$router.push("/itemList/itemRecordForm");
+            },
+
+            listItems() {
+                let self = this;
+                this.$axios.post('/api/item/list')
+                    .then(function (response) {
+                        console.log(response.data);
+                        self.items = response.data;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        return "error";
+                    });
             }
         },
 
