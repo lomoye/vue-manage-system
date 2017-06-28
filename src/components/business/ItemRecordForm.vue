@@ -1,7 +1,7 @@
 <!--项目记录表单提交-->
 <template>
     <el-form ref="form" :model="form" label-width="80px" :rules="rules">
-        <el-form-item :label="o.displayName" v-for="(o, index) in form.itemParams" :key="index" >
+        <el-form-item :label="o.displayName" v-for="(o, index) in form.itemParams" :key="index">
             <el-col :span="8">
                 <el-input type="number" v-model="o.value" :placeholder="o.unit"></el-input>
             </el-col>
@@ -26,8 +26,8 @@
                 },
                 rules: {
                     /*weight: [
-                        { required: true, message: '请输入体重(公斤)'}
-                    ]*/
+                     { required: true, message: '请输入体重(公斤)'}
+                     ]*/
                 }
             }
         },
@@ -46,13 +46,22 @@
             },
 
             onSubmit() {
-                let values = [];
+                let itemParamValueList = [];
+                let itemId = this.$route.params.itemId;
+
                 for (let param of this.form.itemParams) {
-                    console.log(param.value);
+                    let itemParamValue = {};
+                    itemParamValue.itemId = itemId;
+                    itemParamValue.value = param.value;
+                    itemParamValue.itemParamId = param.id;
+
+                    itemParamValueList.push(itemParamValue);
                 }
 
+                let itemRecord = {itemId: itemId, itemParamValueList: itemParamValueList};
 
-                this.$axios.post("/api/itemParamValue/batch", [])
+
+                this.$axios.post("/api/itemRecord", itemRecord)
                     .then(response => console.log(response.data))
                     .catch(error => console.log(error))
             }
