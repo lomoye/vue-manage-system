@@ -28,9 +28,14 @@ module.exports = {
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         proxyTable: {
+            /*'/api':{
+                filter:'/api/!**',
+                target:'http://47.93.253.116:80',
+                changeOrigin:true
+            },*/
             '/api':{
                 filter:'/api/**',
-                target:'http://47.93.253.116:80',
+                target:'http://localhost:80',
                 changeOrigin:true
             },
             '/ms':{

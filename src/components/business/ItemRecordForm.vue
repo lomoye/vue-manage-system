@@ -1,9 +1,9 @@
 <!--项目记录表单提交-->
 <template>
     <el-form ref="form" :model="form" label-width="80px" :rules="rules">
-        <el-form-item prop="weight" label="体重" >
+        <el-form-item :label="o.displayName" v-for="(o, index) in form.itemParams" :key="index" >
             <el-col :span="8">
-                <el-input type="number" placeholder="单位:公斤" v-model.number="form.weight"></el-input>
+                <el-input type="number" v-model="o.value" :placeholder="o.unit"></el-input>
             </el-col>
         </el-form-item>
         <el-form-item label="日期">
@@ -12,8 +12,7 @@
             </el-col>
         </el-form-item>
         <el-form-item>
-            <el-button type="primary" @click="onSubmit">立即创建</el-button>
-            <el-button>取消</el-button>
+            <el-button type="primary" @click="onSubmit">确定</el-button>
         </el-form-item>
     </el-form>
 </template>
@@ -22,19 +21,40 @@
         data() {
             return {
                 form: {
-                    weight: '',
+                    itemParams: [],
                     date: new Date()
                 },
                 rules: {
-                    weight: [
+                    /*weight: [
                         { required: true, message: '请输入体重(公斤)'}
-                    ]
+                    ]*/
                 }
             }
         },
+
+        created() {
+            this.listItemParams();
+        },
+
         methods: {
+            listItemParams() {
+                let self = this;
+                this.$axios.post("/api/itemParam/list", "itemId=" + this.$route.params.itemId)
+                    .then(function (response) {
+                        self.form.itemParams = response.data;
+                    })
+            },
+
             onSubmit() {
-                console.log(form);
+                let values = [];
+                for (let param of this.form.itemParams) {
+                    console.log(param.value);
+                }
+
+
+                this.$axios.post("/api/itemParamValue/batch", [])
+                    .then(response => console.log(response.data))
+                    .catch(error => console.log(error))
             }
         }
     }

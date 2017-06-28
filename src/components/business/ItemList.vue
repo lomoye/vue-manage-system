@@ -10,7 +10,7 @@
 
             <el-col :span="7" :offset="index % 3 == 2 ? 0 : 1" v-for="(o, index) in items" :key="o.name" class="item">
 
-                <item @click.native="routeTo">
+                <item @click.native="routeTo(o)">
                     <h1 class="theme" slot="center">{{ o.name }}</h1>
 
                 </item>
@@ -33,25 +33,23 @@
             }
         },
 
-        created: function () {
+        created() {
             this.listItems();
         },
 
         methods: {
-            routeTo() {
-                this.$router.push("/itemList/itemRecordForm");
+            routeTo(item) {
+                this.$router.push({name: 'itemRecordForm', params: {itemId: item.id}});
             },
 
             listItems() {
                 let self = this;
                 this.$axios.post('/api/item/list')
                     .then(function (response) {
-                        console.log(response.data);
                         self.items = response.data;
                     })
                     .catch(function (error) {
                         console.log(error);
-                        return "error";
                     });
             }
         },
