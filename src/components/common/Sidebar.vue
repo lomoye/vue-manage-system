@@ -41,8 +41,8 @@
                                 title: '项目'
                             },
                             {
-                                index: 'chart',
-                                route: {path: '/chart'},
+                                index: 'itemChartList',
+                                route: {path: '/itemChartList'},
                                 title: '报表'
                             }
                         ]

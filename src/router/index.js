@@ -27,8 +27,13 @@ export default new Router({
                     component: resolve => require(['../components/business/ItemRecordForm.vue'], resolve)
                 },
                 {
-                    path: '/chart',
-                    component: resolve => require(['../components/business/Calculator.vue'], resolve)
+                    path: '/itemChartList',
+                    component: resolve => require(['../components/business/ItemChartList.vue'], resolve)
+                },
+                {
+                    name: 'itemChart',
+                    path: '/itemChartList/itemChart/:itemId',
+                    component: resolve => require(['../components/business/ItemChart.vue'], resolve)
                 }
             ]
         },
