@@ -41,7 +41,7 @@
                 let self = this;
                 this.$axios.post("/api/itemParam/list", "itemId=" + this.$route.params.itemId)
                     .then(function (response) {
-                        self.form.itemParams = response.data;
+                        self.form.itemParams = response.data.data;
                     })
             },
 
@@ -61,8 +61,19 @@
                 let itemRecord = {itemId: itemId, itemParamValueList: itemParamValueList};
 
 
+                let self = this;
                 this.$axios.post("/api/itemRecord", itemRecord)
-                    .then(response => console.log(response.data))
+                    .then(function (response) {
+                        let resp = response.data;
+                        if (resp.resultCode === "0") {
+                            self.$message({
+                                message: '恭喜,录入成功',
+                                type: 'success'
+                            });
+                        } else {
+                            self.$message.error(resp.resultMessage);
+                        }
+                    })
                     .catch(error => console.log(error))
             }
         }

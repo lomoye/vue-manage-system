@@ -36,7 +36,7 @@
                 let self = this;
                 this.$axios.post('/api/item/list')
                     .then(function (response) {
-                        self.items = response.data;
+                        self.items = response.data.data;
                     })
                     .catch(function (error) {
                         console.log(error);

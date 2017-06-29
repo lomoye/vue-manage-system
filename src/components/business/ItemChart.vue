@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-row>
-            <el-col :span="12">
+            <el-col :span="24">
                 <div id="main"></div>
             </el-col>
         </el-row>
@@ -17,23 +17,53 @@
         data() {
             return {
                 option: {
-                    title: {text: this.$route.params.itemId + "的报表数据展示"},
-                    tooltip: {},
-                    xAxis: {
-                        data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+                    title: {
+                        text: '',
+                        subtext: ''
                     },
-                    yAxis: {},
-                    series: [{
-                        name: '销量',
-                        type: 'bar',
-                        data: [5, 20, 36, 10, 10, 20]
-                    }]
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'cross'
+                        }
+                    },
+                    toolbox: {
+                        show: true,
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: []
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLabel: {
+                            formatter: '{value} kg'
+                        },
+                        axisPointer: {
+                            snap: true
+                        }
+                    },
+
+                    series: [
+                        {
+                            name: '用电量',
+                            type: 'line',
+                            smooth: true,
+                            data: [],
+                        }
+                    ]
                 }
-            }
+        }
         },
 
         created() {
-            this.$nextTick(function() {
+
+
+            this.$nextTick(function () {
                 this.renderChart('main');
             })
 

@@ -36,8 +36,8 @@
                 let self = this;
                 this.$axios.get('/api/user')
                     .then(function (response) {
-                        console.log(response.data.name);
-                        self.name = response.data.name;
+                        console.log(response.data.data.name);
+                        self.name = response.data.data.name;
                     })
                     .catch(function (error) {
                         console.log(error);
