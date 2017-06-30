@@ -16,64 +16,86 @@
     export default {
         data() {
             return {
-                option: {
-                    title: {
-                        text: '',
-                        subtext: ''
-                    },
-                    tooltip: {
-                        trigger: 'axis',
-                        axisPointer: {
-                            type: 'cross'
-                        }
-                    },
-                    toolbox: {
-                        show: true,
-                        feature: {
-                            saveAsImage: {}
-                        }
-                    },
-                    xAxis: {
-                        type: 'category',
-                        boundaryGap: false,
-                        data: []
-                    },
-                    yAxis: {
-                        type: 'value',
-                        axisLabel: {
-                            formatter: '{value} kg'
-                        },
-                        axisPointer: {
-                            snap: true
-                        }
-                    },
-
-                    series: [
-                        {
-                            name: '用电量',
-                            type: 'line',
-                            smooth: true,
-                            data: [],
-                        }
-                    ]
-                }
-        }
+                optionDatas: [],
+            }
         },
 
         created() {
-
-
-            this.$nextTick(function () {
-                this.renderChart('main');
-            })
-
+            this.listItemRecords();
         },
 
         methods: {
-            renderChart(id) {
+            renderChart(id, optionDatas) {
                 let myChart = echarts.init(document.getElementById(id));
                 // 绘制图表
-                myChart.setOption(this.option);
+                let options = this.createOptions(optionDatas);
+
+                myChart.setOption(options[0]);
+            },
+
+            createOptions(optionDatas) {
+                let options = [];
+                for (let optionData of optionDatas) {
+                    let option = {
+                        title: {
+                            text: optionData.name ,
+                            subtext: optionData.desc
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'cross'
+                            }
+                        },
+                        toolbox: {
+                            show: true,
+                            feature: {
+                                saveAsImage: {}
+                            }
+                        },
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: optionData.days
+                        },
+                        yAxis: {
+                            type: 'value',
+                            axisLabel: {
+                                formatter: '{value} ' + optionData.unit
+                            },
+                            axisPointer: {
+                                snap: true
+                            }
+                        },
+
+                        series: [
+                            {
+                                name: optionData.yAxisName,
+                                type: 'line',
+                                smooth: true,
+                                data: optionData.yAxis,
+                            }
+                        ]
+                    };
+
+                    options.push(option);
+                }
+
+                return options;
+            },
+
+            listItemRecords() {
+                this.$axios.post('/api/itemRecord/list', 'itemId=' + this.$route.params.itemId)
+                    .then(function (response) {
+                        this.optionDatas = response.data.data;
+
+                        this.$nextTick(function () {
+                            this.renderChart('main', this.optionDatas);
+                        })
+                    }.bind(this))
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             }
         }
 
