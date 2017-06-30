@@ -1,22 +1,20 @@
 <template>
     <div>
         <el-row>
-            <el-col :span="24">
-                <div id="main"></div>
-            </el-col>
+            <vcharts :option="o" :canvasId="index" :height="400" v-for="(o,index) in options" :key="index"></vcharts>
         </el-row>
     </div>
 
 </template>
 
 <script>
-    import echarts from 'echarts'
-
+    import vcharts from './Vcharts'
 
     export default {
         data() {
             return {
                 optionDatas: [],
+                options: []
             }
         },
 
@@ -25,20 +23,12 @@
         },
 
         methods: {
-            renderChart(id, optionDatas) {
-                let myChart = echarts.init(document.getElementById(id));
-                // 绘制图表
-                let options = this.createOptions(optionDatas);
-
-                myChart.setOption(options[0]);
-            },
-
             createOptions(optionDatas) {
                 let options = [];
                 for (let optionData of optionDatas) {
                     let option = {
                         title: {
-                            text: optionData.name ,
+                            text: optionData.name,
                             subtext: optionData.desc
                         },
                         tooltip: {
@@ -81,7 +71,7 @@
                     options.push(option);
                 }
 
-                return options;
+                this.options = options;
             },
 
             listItemRecords() {
@@ -89,17 +79,17 @@
                     .then(function (response) {
                         this.optionDatas = response.data.data;
 
-                        this.$nextTick(function () {
-                            this.renderChart('main', this.optionDatas);
-                        })
+                        this.createOptions(this.optionDatas)
                     }.bind(this))
                     .catch(function (error) {
                         console.log(error);
                     });
             }
+        },
+
+        components: {
+            vcharts
         }
-
-
     }
 
 
