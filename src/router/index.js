@@ -14,12 +14,19 @@ export default new Router({
             component: resolve => require(['../components/common/Home.vue'], resolve),
             children:[
                 {
+                    name: 'readme',
                     path: '/readme',
                     component: resolve => require(['../components/page/Readme.vue'], resolve)
                 },
                 {
+                    name: 'itemList',
                     path: '/itemList',
                     component: resolve => require(['../components/business/ItemList.vue'], resolve)
+                },
+                {
+                    name: 'itemForm',
+                    path: '/itemList/itemForm',
+                    component: resolve => require(['../components/business/ItemForm.vue'], resolve)
                 },
                 {
                     name: 'itemRecordForm',

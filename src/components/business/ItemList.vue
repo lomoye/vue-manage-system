@@ -2,7 +2,7 @@
     <div>
         <el-row>
             <el-col :span="7" class="item">
-                <item>
+                <item @click.native="toAddItem()">
                     <span class="icon-plus" slot="center"></span>
                 </item>
             </el-col>
@@ -15,7 +15,6 @@
 
                 </item>
             </el-col>
-
 
 
         </el-row>
@@ -40,6 +39,10 @@
         methods: {
             routeTo(item) {
                 this.$router.push({name: 'itemRecordForm', params: {itemId: item.id}});
+            },
+
+            toAddItem() {
+                this.$router.push({name: 'itemForm'});
             },
 
             listItems() {
