@@ -3,6 +3,7 @@
         <el-row>
             <vcharts :option="o" :canvasId="index" :height="400" v-for="(o,index) in options" :key="index"></vcharts>
         </el-row>
+
     </div>
 
 </template>

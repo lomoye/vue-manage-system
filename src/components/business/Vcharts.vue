@@ -16,7 +16,6 @@
             renderChart(option) {
                 this.$nextTick(function () {
                     let canvas = document.getElementById(this.canvasId);
-
                     let myChart = echarts.init(canvas);
                     myChart.setOption(option);
                 })
