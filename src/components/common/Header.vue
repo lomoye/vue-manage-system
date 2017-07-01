@@ -18,7 +18,7 @@
     export default {
         data() {
             return {
-                name: 'linxin'
+                name: ''
             }
         },
         created: function () {
@@ -33,16 +33,11 @@
             },
 
             getUsername() {
-                let self = this;
                 this.$axios.get('/api/user')
                     .then(function (response) {
                         console.log(response.data.data.name);
-                        self.name = response.data.data.name;
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                        return "error";
-                    });
+                        this.name = response.data.data.name;
+                    }.bind(this))
             }
         }
     }
