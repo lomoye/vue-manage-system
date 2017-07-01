@@ -13,8 +13,6 @@ Vue.use(ElementUI);
 /**
  * http配置
  */
-
-let self = this;
 // Add a response interceptor
 axios.interceptors.response.use(function (response) {
     // Do something with response data
