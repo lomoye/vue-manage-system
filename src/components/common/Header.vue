@@ -27,7 +27,6 @@
         methods: {
             handleCommand(command) {
                 if (command === 'loginout') {
-                    localStorage.removeItem('ms_username')
                     this.$router.push('/login');
                 }
             },
@@ -35,8 +34,7 @@
             getUsername() {
                 this.$axios.get('/api/user')
                     .then(function (response) {
-                        console.log(response.data.data.name);
-                        this.name = response.data.data.name;
+                        this.name = response.data.data.nick;
                     }.bind(this))
             }
         }
