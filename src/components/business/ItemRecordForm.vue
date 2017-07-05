@@ -61,20 +61,13 @@
                 let itemRecord = {itemId: itemId, itemParamValueList: itemParamValueList};
 
 
-                let self = this;
                 this.$axios.post("/api/itemRecord", itemRecord)
                     .then(function (response) {
-                        let resp = response.data;
-                        if (resp.resultCode === "0") {
-                            self.$message({
-                                message: '恭喜,录入成功',
-                                type: 'success'
-                            });
-                        } else {
-                            self.$message.error(resp.resultMessage);
-                        }
-                    })
-                    .catch(error => console.log(error))
+                        this.$message({
+                            message: '恭喜,录入成功',
+                            type: 'success'
+                        });
+                    }.bind(this))
             }
         }
     }
