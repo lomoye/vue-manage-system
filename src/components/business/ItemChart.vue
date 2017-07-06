@@ -3,7 +3,7 @@
         <el-row>
             <vcharts :option="o" :canvasId="index" :height="400" v-for="(o,index) in options" :key="index"></vcharts>
 
-            <h3>减肥报表</h3>
+            <h3>{{ name }}报表</h3>
 
             <el-table
                 :data="tableData"
@@ -35,7 +35,9 @@
 
                 tableData: [],
 
-                itemParams: []
+                itemParams: [],
+
+                name: ''
             }
         },
 
@@ -100,6 +102,8 @@
                 this.itemParams = data.itemParams;
 
                 this.tableData = data.recordMaps;
+
+                this.name = data.name;
             },
 
             listItemRecords() {
