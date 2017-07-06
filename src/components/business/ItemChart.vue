@@ -2,6 +2,23 @@
     <div>
         <el-row>
             <vcharts :option="o" :canvasId="index" :height="400" v-for="(o,index) in options" :key="index"></vcharts>
+
+            <h3>减肥报表</h3>
+
+            <el-table
+                :data="tableData"
+                stripe
+                style="width: 100%">
+                <el-table-column prop="date" label="日期" width="180">
+
+                </el-table-column>
+                <el-table-column :prop="o.id + ''" :label="o.displayName" width="180" v-for="(o,index) in itemParams" :key="o.id">
+
+                </el-table-column>
+                <el-table-column prop="desc" label="备注">
+
+                </el-table-column>
+            </el-table>
         </el-row>
 
     </div>
@@ -14,13 +31,17 @@
     export default {
         data() {
             return {
-                optionDatas: [],
-                options: []
+                options: [],
+
+                tableData: [],
+
+                itemParams: []
             }
         },
 
         created() {
             this.listItemRecords();
+            this.fetchItemReport();
         },
 
         methods: {
@@ -75,12 +96,26 @@
                 this.options = options;
             },
 
+            initReport(data) {
+                this.itemParams = data.itemParams;
+
+                this.tableData = data.recordMaps;
+            },
+
             listItemRecords() {
                 this.$axios.post('/api/itemRecord/list', 'itemId=' + this.$route.params.itemId)
                     .then(function (response) {
-                        this.optionDatas = response.data.data;
+                        this.createOptions(response.data.data)
+                    }.bind(this))
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
 
-                        this.createOptions(this.optionDatas)
+            fetchItemReport() {
+                this.$axios.post('/api/itemRecord/report', 'itemId=' + this.$route.params.itemId)
+                    .then(function (response) {
+                        this.initReport(response.data.data)
                     }.bind(this))
                     .catch(function (error) {
                         console.log(error);

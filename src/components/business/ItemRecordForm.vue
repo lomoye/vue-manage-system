@@ -6,11 +6,23 @@
                 <el-input type="number" v-model="o.value" :placeholder="o.unit"></el-input>
             </el-col>
         </el-form-item>
+        <el-form-item label="备注">
+            <el-col :span="8">
+                <el-input
+                    type="textarea"
+                    autosize
+                    placeholder="可选填"
+                    v-model="form.desc"
+                    >
+                </el-input>
+            </el-col>
+        </el-form-item>
         <el-form-item label="日期">
             <el-col :span="8">
                 <el-date-picker type="date" v-model="form.date" style="width: 100%;" readonly></el-date-picker>
             </el-col>
         </el-form-item>
+
         <el-form-item>
             <el-button type="primary" @click="onSubmit">确定</el-button>
         </el-form-item>
@@ -22,6 +34,9 @@
             return {
                 form: {
                     itemParams: [],
+
+                    desc: '',
+
                     date: new Date()
                 },
                 rules: {
@@ -58,8 +73,7 @@
                     itemParamValueList.push(itemParamValue);
                 }
 
-                let itemRecord = {itemId: itemId, itemParamValueList: itemParamValueList};
-
+                let itemRecord = {itemId: itemId, itemParamValueList: itemParamValueList, desc: this.form.desc};
 
                 this.$axios.post("/api/itemRecord", itemRecord)
                     .then(function (response) {
