@@ -1,14 +1,17 @@
 <template>
 
     <div class="grid-content" :span="6">
-        <a href="javascript:" class="empty"><slot name="center"></slot></a>
+        <a href="javascript:" class="empty">
+            <slot name="center"></slot>
+        </a>
+        <slot name="footer"></slot>
     </div>
 
 </template>
 
 <script>
     export default {
-        data: function(){
+        data: function () {
             return {}
         }
     }

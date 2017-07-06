@@ -12,7 +12,7 @@
 
                 <item @click.native="routeTo(o)">
                     <h1 class="theme" slot="center">{{ o.name }}</h1>
-
+                    <el-button @click.prevent.stop="toAddParamPage(o)" slot="footer">添加属性</el-button>
                 </item>
             </el-col>
 
@@ -39,6 +39,10 @@
         methods: {
             routeTo(item) {
                 this.$router.push({name: 'itemRecordForm', params: {itemId: item.id}});
+            },
+
+            toAddParamPage(item) {
+                this.$router.push({name: 'addItemParamForm', params: {itemId: item.id}})
             },
 
             toAddItem() {
