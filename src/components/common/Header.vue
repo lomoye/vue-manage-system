@@ -4,10 +4,11 @@
         <div class="user-info">
             <el-dropdown trigger="click" @command="handleCommand">
                 <span class="el-dropdown-link">
-                    <img class="user-logo" src="../../../static/img/img.jpg">
-                    {{name}}
+                    <img class="user-logo" :src="user.icon">
+                    {{user.nick}}
                 </span>
                 <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item command="config">换头像</el-dropdown-item>
                     <el-dropdown-item command="loginout">退出</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
@@ -18,7 +19,10 @@
     export default {
         data() {
             return {
-                name: ''
+                user: {
+                    nick: '',
+                    icon: ''
+                }
             }
         },
         created: function () {
@@ -29,12 +33,16 @@
                 if (command === 'loginout') {
                     this.$router.push('/login');
                 }
+
+                if (command === 'config') {
+                    this.$router.push('/userConfig');
+                }
             },
 
             getUsername() {
                 this.$axios.get('/api/user')
                     .then(function (response) {
-                        this.name = response.data.data.nick;
+                        this.user = response.data.data;
                     }.bind(this))
             }
         }
@@ -80,9 +88,5 @@
         width: 40px;
         height: 40px;
         border-radius: 50%;
-    }
-
-    .el-dropdown-menu__item {
-        text-align: center;
     }
 </style>

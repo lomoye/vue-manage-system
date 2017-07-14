@@ -14,6 +14,11 @@ export default new Router({
             component: resolve => require(['../components/common/Home.vue'], resolve),
             children:[
                 {
+                    name: 'userConfig',
+                    path: '/userConfig',
+                    component: resolve => require(['../components/business/UserConfig.vue'], resolve)
+                },
+                {
                     name: 'readme',
                     path: '/readme',
                     component: resolve => require(['../components/page/Readme.vue'], resolve)
