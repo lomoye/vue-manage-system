@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>上传头像</h1>
+        <h3>上传头像</h3>
         <el-upload
             class="avatar-uploader"
             action="/api/user/icon"
@@ -43,13 +43,14 @@
 </script>
 
 
-<style scoped>
+<style>
     .avatar-uploader .el-upload {
         border: 1px dashed #d9d9d9;
         border-radius: 6px;
         cursor: pointer;
         position: relative;
         overflow: hidden;
+        width: 178px;
     }
     .avatar-uploader .el-upload:hover {
         border-color: #20a0ff;
