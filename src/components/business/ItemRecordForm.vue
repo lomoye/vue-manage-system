@@ -53,11 +53,10 @@
 
         methods: {
             listItemParams() {
-                let self = this;
                 this.$axios.post("/api/itemParam/list", "itemId=" + this.$route.params.itemId)
                     .then(function (response) {
-                        self.form.itemParams = response.data.data;
-                    })
+                        this.form.itemParams = response.data.data;
+                    }.bind(this))
             },
 
             onSubmit() {

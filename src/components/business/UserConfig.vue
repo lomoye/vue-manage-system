@@ -25,6 +25,11 @@
         methods: {
             handleAvatarSuccess(res, file) {
                 this.imageUrl = URL.createObjectURL(file.raw);
+                this.$message({
+                    showClose: true,
+                    message: '头像上传成功~',
+                    type: 'success'
+                });
             },
             beforeAvatarUpload(file) {
                 const isJPG = file.type === 'image/jpeg' || file.type === 'image/png';

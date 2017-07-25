@@ -50,11 +50,10 @@
             },
 
             listItems() {
-                let self = this;
                 this.$axios.post('/api/item/list')
                     .then(function (response) {
-                        self.items = response.data.data;
-                    })
+                        this.items = response.data.data;
+                    }.bind(this))
                     .catch(function (error) {
                         console.log(error);
                     });

@@ -5,7 +5,8 @@
                 <template v-if="item.subs">
                     <el-submenu :index="item.index">
                         <template slot="title"><i :class="item.icon"></i>{{ item.title }}</template>
-                        <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index" :route="subItem.route">{{ subItem.title }}
+                        <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index"
+                                      :route="subItem.route">{{ subItem.title }}
                         </el-menu-item>
                     </el-submenu>
                 </template>
@@ -25,10 +26,10 @@
             return {
                 items: [
                     {
-                        icon: 'el-icon-setting',
-                        index: 'readme',
-                        route: {path: '/readme'},
-                        title: '自述'
+                        icon: 'el-icon-document',
+                        index: 'article',
+                        route: {path: '/article'},
+                        title: '减肥食谱'
                     },
                     {
                         icon: 'el-icon-date',
@@ -50,7 +51,7 @@
                 ]
             }
         },
-        computed:{
+        computed: {
             onRoutes(){
                 return this.$route.path.split("/")[1];
             }
@@ -59,16 +60,17 @@
 </script>
 
 <style scoped>
-    .sidebar{
+    .sidebar {
         display: block;
         position: absolute;
         width: 250px;
         left: 0;
         top: 70px;
-        bottom:0;
+        bottom: 0;
         background: #2E363F;
     }
+
     .sidebar > ul {
-        height:100%;
+        height: 100%;
     }
 </style>
