@@ -27,9 +27,9 @@
                 items: [
                     {
                         icon: 'el-icon-document',
-                        index: 'article',
-                        route: {path: '/article'},
-                        title: '减肥食谱'
+                        index: 'account',
+                        route: {path: '/account'},
+                        title: '我的'
                     },
                     {
                         icon: 'el-icon-date',

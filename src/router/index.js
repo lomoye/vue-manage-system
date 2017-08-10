@@ -19,9 +19,9 @@ export default new Router({
                     component: resolve => require(['../components/business/UserConfig.vue'], resolve)
                 },
                 {
-                    name: 'article',
-                    path: '/article',
-                    component: resolve => require(['../components/page/VArticle.vue'], resolve)
+                    name: 'account',
+                    path: '/account',
+                    component: resolve => require(['../components/business/Account.vue'], resolve)
                 },
                 {
                     name: 'itemList',

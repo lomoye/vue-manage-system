@@ -40,7 +40,7 @@
             submitForm() {
                 this.$axios.post('/api/user/login', this.ruleForm)
                     .then(function (response) {
-                        this.$router.push({name: 'article'})
+                        this.$router.push({name: 'account'})
                     }.bind(this))
             }
         }

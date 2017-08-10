@@ -8,7 +8,7 @@
                     {{user.nick}}
                 </span>
                 <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item command="config">换头像</el-dropdown-item>
+                    <el-dropdown-item command="config">头像</el-dropdown-item>
                     <el-dropdown-item command="loginout">退出</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
@@ -85,8 +85,8 @@
         position: absolute;
         left: 0;
         top: 15px;
-        width: 40px;
-        height: 40px;
+        width: 25px;
+        height: 25px;
         border-radius: 50%;
     }
 </style>
