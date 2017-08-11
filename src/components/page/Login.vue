@@ -26,7 +26,7 @@
     export default {
         data: function () {
             return {
-                isMobile: false,
+                isMobile: /Android|webOS|iPhone|iPad|BlackBerry/i.test(navigator.userAgent) ,
 
                 ruleForm: {
                     mobile: '',
