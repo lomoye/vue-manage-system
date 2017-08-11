@@ -10,6 +10,10 @@
                     <el-input type="password" placeholder="password" v-model="ruleForm.password"
                               @keyup.enter.native="submitForm('ruleForm')"></el-input>
                 </el-form-item>
+                <el-radio-group v-model="isMobile" style="margin-bottom: 20px;">
+                    <el-radio-button :label="false">电脑端</el-radio-button>
+                    <el-radio-button :label="true">手机端</el-radio-button>
+                </el-radio-group>
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm()">登录</el-button>
                 </div>
@@ -22,6 +26,8 @@
     export default {
         data: function () {
             return {
+                isMobile: false,
+
                 ruleForm: {
                     mobile: '',
                     password: ''
@@ -40,7 +46,11 @@
             submitForm() {
                 this.$axios.post('/api/user/login', this.ruleForm)
                     .then(function (response) {
-                        this.$router.push({name: 'account'})
+                        if (this.isMobile) {
+                            this.$router.push({name: 'mobileItemList'});
+                        } else {
+                            this.$router.push({name: 'account'});
+                        }
                     }.bind(this))
             }
         }
@@ -70,7 +80,7 @@
         left: 50%;
         top: 50%;
         width: 300px;
-        height: 160px;
+        height: 180px;
         margin: -150px 0 0 -190px;
         padding: 40px;
         border-radius: 5px;

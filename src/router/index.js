@@ -59,5 +59,19 @@ export default new Router({
             path: '/login',
             component: resolve => require(['../components/page/Login.vue'], resolve)
         },
+
+
+
+        /*手机端*/
+        {
+            name: 'mobileItemList',
+            path: '/mobileItemList',
+            component: resolve => require(['../components/mobile/MobileItemList.vue'], resolve)
+        },
+        {
+            name: 'mobileItemRecordForm',
+            path: '/mobileItemList/mobileItemRecordForm/:itemId',
+            component: resolve => require(['../components/mobile/MobileItemRecordForm.vue'], resolve)
+        }
     ]
 })
