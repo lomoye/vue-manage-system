@@ -55,6 +55,19 @@
         background: #ca5663
     }
 
+    .container {
+        background: none repeat scroll 0 0 #fff;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom:0;
+        width: auto;
+        padding:20px;
+        box-sizing: border-box;
+        overflow-y: scroll;
+    }
+
     .theme {
         display: inline-block;
         position: relative;
