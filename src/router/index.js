@@ -51,6 +51,11 @@ export default new Router({
                     name: 'itemChart',
                     path: '/itemChartList/itemChart/:itemId',
                     component: resolve => require(['../components/business/ItemChart.vue'], resolve)
+                },
+                {
+                    name: 'chat',
+                    path: '/chat',
+                    component: resolve => require(['../components/business/Chat.vue'], resolve)
                 }
             ]
         },
