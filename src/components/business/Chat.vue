@@ -54,7 +54,7 @@
                     return;
                 }
 
-                this.ws = new WebSocket("ws://localhost/ws/chat/" + localStorage.userId);
+                this.ws = new WebSocket("wss://localhost/ws/chat/" + localStorage.userId);
                 console.log(this.ws);
                 this.ws.onopen = function () {
                     console.log("已连接");
