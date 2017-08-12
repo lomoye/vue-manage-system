@@ -46,6 +46,8 @@
             submitForm() {
                 this.$axios.post('/api/user/login', this.ruleForm)
                     .then(function (response) {
+                        //将userId存到游览器缓存里
+                        localStorage.userId = response.data.data.id;
                         if (this.isMobile) {
                             this.$router.push({name: 'mobileItemList'});
                         } else {

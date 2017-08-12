@@ -77,6 +77,11 @@ export default new Router({
             name: 'mobileItemRecordForm',
             path: '/mobileItemList/mobileItemRecordForm/:itemId',
             component: resolve => require(['../components/mobile/MobileItemRecordForm.vue'], resolve)
+        },
+        {
+            name: 'mobileChat',
+            path: '/mobileChat',
+            component: resolve => require(['../components/mobile/MobileChat.vue'], resolve)
         }
     ]
 })

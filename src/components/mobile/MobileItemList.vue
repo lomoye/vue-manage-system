@@ -1,8 +1,13 @@
 <template>
     <div class="container">
         <el-row>
-            <el-col v-for="(o, index) in items" :key="o.name" class="item">
+            <el-col class="item" style="background: #ccc">
+                <item @click.native="toChat()">
+                    <h1 class="theme" slot="center" >~尬聊实验室~</h1>
+                </item>
+            </el-col>
 
+            <el-col v-for="(o, index) in items" :key="o.name" class="item">
                 <item @click.native="routeTo(o)">
                     <h1 class="theme" slot="center">{{ o.name }}</h1>
                 </item>
@@ -16,6 +21,7 @@
 
 <script>
     import item from '../business/Item';
+
     export default {
         data() {
             return {
@@ -30,6 +36,10 @@
         methods: {
             routeTo(item) {
                 this.$router.push({name: 'mobileItemRecordForm', params: {itemId: item.id}});
+            },
+
+            toChat() {
+                this.$router.push({name: 'mobileChat'});
             },
 
             listItems() {

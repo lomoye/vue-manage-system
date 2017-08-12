@@ -54,7 +54,7 @@
                     return;
                 }
 
-                this.ws = new WebSocket("wss://lomoye.top/ws/chat/1");
+                this.ws = new WebSocket("ws://localhost/ws/chat/" + localStorage.userId);
                 console.log(this.ws);
                 this.ws.onopen = function () {
                     console.log("已连接");
