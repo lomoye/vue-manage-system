@@ -40,7 +40,7 @@
                     return;
                 }
 
-                if (!this.ws) {
+                if (!this.ws || this.ws.readyState !== 1) {
                     console.log("ws re init..");
                     this.initChat();
                 }
@@ -50,12 +50,12 @@
             },
 
             initChat() {
-                if (this.ws) {
+                if (this.ws && this.ws.readyState === 1) {
                     return;
                 }
 
                 this.ws = new WebSocket("wss://lomoye.top/ws/chat/1");
-
+                console.log(this.ws);
                 this.ws.onopen = function () {
                     console.log("已连接");
                 };
