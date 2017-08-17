@@ -26,16 +26,16 @@
             return {
                 items: [
                     {
-                        icon: 'el-icon-message',
-                        index: 'chat',
-                        route: {path: '/chat'},
-                        title: '尬聊'
-                    },
-                    {
                         icon: 'el-icon-document',
                         index: 'account',
                         route: {path: '/account'},
                         title: '我的'
+                    },
+                    {
+                        icon: 'el-icon-message',
+                        index: 'chat',
+                        route: {path: '/chat'},
+                        title: '尬聊'
                     },
                     {
                         icon: 'el-icon-date',
@@ -53,6 +53,12 @@
                                 title: '报表'
                             }
                         ]
+                    },
+                    {
+                        icon: 'el-icon-time',
+                        index: 'versionNote',
+                        route: {path: '/versionNote'},
+                        title: '更新日志'
                     }
                 ]
             }

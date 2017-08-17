@@ -56,6 +56,11 @@ export default new Router({
                     name: 'chat',
                     path: '/chat',
                     component: resolve => require(['../components/business/Chat.vue'], resolve)
+                },
+                {
+                    name: 'versionNote',
+                    path: '/versionNote',
+                    component: resolve => require(['../components/business/VersionNote.vue'], resolve)
                 }
             ]
         },
