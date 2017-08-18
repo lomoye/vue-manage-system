@@ -44,8 +44,19 @@ export default new Router({
                     component: resolve => require(['../components/business/AddItemParamForm.vue'], resolve)
                 },
                 {
+                    name: 'itemChartList',
                     path: '/itemChartList',
                     component: resolve => require(['../components/business/ItemChartList.vue'], resolve)
+                },
+                {
+                    name: 'itemGoalForm',
+                    path: '/itemList/itemGoalForm/:itemId',
+                    component: resolve => require(['../components/business/ItemGoalForm.vue'], resolve)
+                },
+                {
+                    name: 'itemGoal',
+                    path: '/itemGoal',
+                    component: resolve => require(['../components/business/ItemGoal.vue'], resolve)
                 },
                 {
                     name: 'itemChart',

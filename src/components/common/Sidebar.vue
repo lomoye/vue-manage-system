@@ -51,6 +51,11 @@
                                 index: 'itemChartList',
                                 route: {path: '/itemChartList'},
                                 title: '报表'
+                            },
+                            {
+                                index: 'itemGoal',
+                                route: {path: '/itemGoal'},
+                                title: '目标'
                             }
                         ]
                     },
