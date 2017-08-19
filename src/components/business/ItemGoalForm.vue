@@ -8,6 +8,17 @@
                 </el-col>
             </el-form-item>
 
+            <el-form-item label="目标参数">
+                <el-select v-model="form.itemParamId" placeholder="请选择">
+                    <el-option
+                        v-for="(itemParam, index) in itemParams"
+                        :key="index"
+                        :label="itemParam.displayName"
+                        :value="itemParam.id">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+
             <el-form-item label="目标数值">
                 <el-col :span="8">
                     <el-input type="number" v-model="form.goalNum"></el-input>
@@ -34,11 +45,18 @@
         data() {
             return {
                 form: {
+                    itemParamId: '',
                     endTime: '',
                     goalNum: '',
                     creditRate: ''
-                }
+                },
+
+                itemParams: []
             }
+        },
+
+        created() {
+            this.listItemParams();
         },
 
         methods: {
@@ -49,6 +67,7 @@
                 formData.goalNum = this.form.goalNum;
                 formData.creditRate = this.form.creditRate;
                 formData.endTime = formatDate(this.form.endTime, "yyyy/MM/dd hh:mm:ss");
+                formData.itemParamId = this.form.itemParamId;
 
                 this.$axios.post('/api/itemGoal', formData)
                     .then(function (response) {
@@ -57,7 +76,15 @@
                             type: 'success'
                         });
                     }.bind(this))
-            }
+            },
+
+            listItemParams() {
+                this.$axios.post("/api/itemParam/list", "itemId=" + this.$route.params.itemId)
+                    .then(function (response) {
+                        this.itemParams = response.data.data;
+                        console.log(this.itemParams)
+                    }.bind(this))
+            },
 
         }
     }
