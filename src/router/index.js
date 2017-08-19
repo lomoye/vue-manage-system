@@ -72,6 +72,11 @@ export default new Router({
                     name: 'versionNote',
                     path: '/versionNote',
                     component: resolve => require(['../components/business/VersionNote.vue'], resolve)
+                },
+                {
+                    name: 'suggest',
+                    path: '/suggest',
+                    component: resolve => require(['../components/business/Suggest.vue'], resolve)
                 }
             ]
         },

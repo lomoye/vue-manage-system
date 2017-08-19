@@ -63,7 +63,13 @@
                         icon: 'el-icon-time',
                         index: 'versionNote',
                         route: {path: '/versionNote'},
-                        title: '更新日志'
+                        title: '更新'
+                    },
+                    {
+                        icon: 'el-icon-information',
+                        index: 'suggest',
+                        route: {path: '/suggest'},
+                        title: '建议'
                     }
                 ]
             }
