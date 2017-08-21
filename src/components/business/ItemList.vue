@@ -66,9 +66,6 @@
                     .then(function (response) {
                         this.items = response.data.data;
                     }.bind(this))
-                    .catch(function (error) {
-                        console.log(error);
-                    });
             },
 
             deleteItem(item) {

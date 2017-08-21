@@ -17,13 +17,78 @@
 
                 </div>
             </div>
+        </div>
 
-
+        <div class="account-log">
+            <div class="mybox-header">积分日志</div>
+            <div>
+                <el-table
+                    :data="creditAccountLogs"
+                    stripe
+                    style="width: 100%">
+                    <el-table-column
+                        prop="day"
+                        label="日期"
+                        width="200">
+                    </el-table-column>
+                    <el-table-column
+                        prop="content"
+                        label="事件">
+                    </el-table-column>
+                </el-table>
+            </div>
         </div>
 
     </div>
 
 </template>
+
+<script>
+    export default {
+        data() {
+            return {
+                user: {
+                    nick: '',
+                    icon: ''
+                },
+
+                creditAccount: '',
+
+                creditAccountLogs: []
+            }
+        },
+
+        created() {
+            this.getCreditAccount();
+            this.getUser();
+            this.listCreditAccountLog();
+        },
+
+        methods: {
+
+            getUser() {
+                this.$axios.get('/api/user')
+                    .then(function (response) {
+                        this.user = response.data.data;
+                    }.bind(this))
+            },
+
+            getCreditAccount() {
+                this.$axios.get('/api/creditAccount')
+                    .then(function (response) {
+                        this.creditAccount = response.data.data;
+                    }.bind(this))
+            },
+
+            listCreditAccountLog() {
+                this.$axios.post('/api/creditAccountLog/list')
+                    .then(function (response) {
+                        this.creditAccountLogs = response.data.data;
+                    }.bind(this))
+            }
+        },
+    }
+</script>
 
 <style scoped>
     .mybox {
@@ -52,7 +117,7 @@
         background: #eff0f9;
     }
 
-    .mod-my .mybox .mybox-header {
+    .mybox-header {
         color: #333333;
         font-size: 20px;
         line-height: 60px;
@@ -86,46 +151,13 @@
         font-size: 16px;
         padding: 50px;
     }
+
+
+    .account-log {
+        margin-top: 20px;
+    }
 </style>
 
-<script>
-    export default {
-        data() {
-            return {
-                user: {
-                    nick: '',
-                    icon: ''
-                },
 
-                creditAccount: ''
-            }
-        },
-
-        created() {
-            this.getCreditAccount();
-            this.getUser()
-        },
-
-        methods: {
-
-            getUser() {
-                this.$axios.get('/api/user')
-                    .then(function (response) {
-                        this.user = response.data.data;
-                    }.bind(this))
-            },
-
-            getCreditAccount() {
-                this.$axios.get('/api/creditAccount')
-                    .then(function (response) {
-                        this.creditAccount = response.data.data;
-                    }.bind(this))
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            }
-        },
-    }
-</script>
 
 
