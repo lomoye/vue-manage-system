@@ -39,6 +39,11 @@ export default new Router({
                     component: resolve => require(['../components/business/ItemRecordForm.vue'], resolve)
                 },
                 {
+                    name: 'itemRecordMakeupForm',
+                    path: '/itemList/itemRecordMakeupForm/:itemId',
+                    component: resolve => require(['../components/business/ItemRecordMakeupForm.vue'], resolve)
+                },
+                {
                     name: 'addItemParamForm',
                     path: '/itemList/addItemParamForm/:itemId',
                     component: resolve => require(['../components/business/AddItemParamForm.vue'], resolve)

@@ -13,6 +13,7 @@
                 <item @click.native="routeTo(o)">
                     <h1 class="theme" slot="center">{{ o.name }}</h1>
                     <el-button @click.prevent.stop="toAddGoal(o)" slot="footer">制定目标</el-button>
+                    <el-button @click.prevent.stop="toMakeupRecord(o)" slot="footer">弥补记录</el-button>
                     <el-button @click.prevent.stop="toAddParamPage(o)" slot="footer">添加属性</el-button>
                     <el-button @click.prevent.stop="deleteItem(o)" slot="footer">删除项目</el-button>
 
@@ -46,6 +47,10 @@
 
             routeTo(item) {
                 this.$router.push({name: 'itemRecordForm', params: {itemId: item.id}});
+            },
+
+            toMakeupRecord(item) {
+                this.$router.push({name: 'itemRecordMakeupForm', params: {itemId: item.id}})
             },
 
             toAddParamPage(item) {
