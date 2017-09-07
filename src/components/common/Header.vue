@@ -1,10 +1,10 @@
 <template>
     <div class="header">
-        <div class="logo">沉迷学习</div>
+        <div class="logo">数据记录</div>
         <div class="user-info">
             <el-dropdown trigger="click" @command="handleCommand">
                 <span class="el-dropdown-link">
-                    <img class="user-logo" :src="user.icon">
+                    <img class="user-logo" :src="user.icon == null ? '../../../static/img/img.jpg' : user.icon">
                     {{user.nick}}
                 </span>
                 <el-dropdown-menu slot="dropdown">
@@ -85,8 +85,8 @@
         position: absolute;
         left: 0;
         top: 15px;
-        width: 25px;
-        height: 25px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
     }
 </style>

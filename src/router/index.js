@@ -90,6 +90,11 @@ export default new Router({
             path: '/login',
             component: resolve => require(['../components/page/Login.vue'], resolve)
         },
+        {
+            name: 'register',
+            path: '/register',
+            component: resolve => require(['../components/page/Register.vue'], resolve)
+        },
 
 
 
