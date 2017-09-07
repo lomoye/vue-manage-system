@@ -5,7 +5,7 @@
             <div class="mybox-header">我的</div>
             <div class="mybox-body">
                 <div class="mybox-user">
-                    <img class="user-logo" :src="user.icon">
+                    <img class="user-logo" :src="user.icon == null ? '../../../static/img/img.jpg' : user.icon">
                     <span style="font-size: 20px;">{{ user.nick }}</span>
                 </div>
                 <div class="mybox-my">
