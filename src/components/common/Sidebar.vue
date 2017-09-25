@@ -67,9 +67,20 @@
                     },
                     {
                         icon: 'el-icon-information',
-                        index: 'suggest',
-                        route: {path: '/suggest'},
-                        title: '建议'
+                        index: '3',
+                        title: '建议',
+                        subs: [
+                            {
+                                index: 'userSuggestForm',
+                                route: {path: '/userSuggestForm'},
+                                title: '提交'
+                            },
+                            {
+                                index: 'userSuggestList',
+                                route: {path: '/userSuggestList'},
+                                title: '列表'
+                            }
+                        ]
                     }
                 ]
             }

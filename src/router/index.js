@@ -79,9 +79,14 @@ export default new Router({
                     component: resolve => require(['../components/business/VersionNote.vue'], resolve)
                 },
                 {
-                    name: 'suggest',
-                    path: '/suggest',
-                    component: resolve => require(['../components/business/Suggest.vue'], resolve)
+                    name: 'userSuggestList',
+                    path: '/userSuggestList',
+                    component: resolve => require(['../components/business/UserSuggestList.vue'], resolve)
+                },
+                {
+                    name: 'userSuggestForm',
+                    path: '/userSuggestForm',
+                    component: resolve => require(['../components/business/UserSuggestForm.vue'], resolve)
                 }
             ]
         },
