@@ -35,12 +35,12 @@ module.exports = {
             },*/
             '/api':{
                 filter:'/api/**',
-                target:'http://localhost:80',
+                target:'http://localhost:8888',
                 changeOrigin:true
             },
             '/ws':{
                 filter:'/ws/**',
-                target:'http://localhost:80',
+                target:'http://localhost:8888',
                 changeOrigin:true
             }
         },
