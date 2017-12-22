@@ -35,7 +35,7 @@
                         icon: 'el-icon-message',
                         index: 'chat',
                         route: {path: '/chat'},
-                        title: '尬聊'
+                        title: '提醒'
                     },
                     {
                         icon: 'el-icon-date',
@@ -58,6 +58,12 @@
                                 title: '目标'
                             }
                         ]
+                    },
+                    {
+                        icon: 'el-icon-message',
+                        index: 'chat',
+                        route: {path: '/chat'},
+                        title: '尬聊'
                     },
                     {
                         icon: 'el-icon-time',
@@ -86,7 +92,7 @@
             }
         },
         computed: {
-            onRoutes(){
+            onRoutes() {
                 return this.$route.path.split("/")[1];
             }
         }
