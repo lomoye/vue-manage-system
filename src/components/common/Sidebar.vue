@@ -33,8 +33,8 @@
                     },
                     {
                         icon: 'el-icon-message',
-                        index: 'chat',
-                        route: {path: '/chat'},
+                        index: 'reminder',
+                        route: {path: '/reminder'},
                         title: '提醒'
                     },
                     {
@@ -60,7 +60,7 @@
                         ]
                     },
                     {
-                        icon: 'el-icon-message',
+                        icon: 'el-icon-star-on',
                         index: 'chat',
                         route: {path: '/chat'},
                         title: '尬聊'

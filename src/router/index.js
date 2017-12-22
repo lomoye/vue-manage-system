@@ -24,6 +24,11 @@ export default new Router({
                     component: resolve => require(['../components/business/Account.vue'], resolve)
                 },
                 {
+                    name: 'reminder',
+                    path: '/reminder',
+                    component: resolve => require(['../components/business/Reminder.vue'], resolve)
+                },
+                {
                     name: 'itemList',
                     path: '/itemList',
                     component: resolve => require(['../components/business/ItemList.vue'], resolve)

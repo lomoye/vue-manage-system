@@ -23,7 +23,7 @@ module.exports = {
     },
     dev: {
         env: require('./dev.env'),
-        port: 8080,
+        port: 8081,
         autoOpenBrowser: true,
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
@@ -35,12 +35,12 @@ module.exports = {
             },*/
             '/api':{
                 filter:'/api/**',
-                target:'http://localhost:8888',
+                target:'http://localhost:8080',
                 changeOrigin:true
             },
             '/ws':{
                 filter:'/ws/**',
-                target:'http://localhost:8888',
+                target:'http://localhost:8080',
                 changeOrigin:true
             }
         },
