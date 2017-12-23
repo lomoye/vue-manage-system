@@ -38,6 +38,23 @@ axios.interceptors.response.use(function (response) {
 });
 
 
+// Add a request interceptor
+axios.interceptors.request.use(function (config) {
+    if (config.data) {
+        for (let field in config.data) {
+            if (config.data[field] === '') {//把空字符串转成null
+                config.data[field] = null;
+            }
+        }
+    }
+    return config;
+}, function (error) {
+    Message.error({message: '系统繁忙,请稍后再试~'});
+    console.log(error);
+    return Promise.reject(error);
+});
+
+
 Vue.prototype.$axios = axios;
 new Vue({
     router,
