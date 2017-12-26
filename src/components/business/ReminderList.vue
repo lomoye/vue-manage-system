@@ -47,7 +47,7 @@
             title="删除提醒事项"
             :visible.sync="dialogDeleteVisible"
             size="tiny"
-            :before-close="handleClose">
+            >
             <span>确认删除么？</span>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogDeleteVisible = false">取 消</el-button>
@@ -127,13 +127,14 @@
             },
 
             deleteReminder() {
-                this.$axios.delete('/api/reminder', this.reminderSelected)
+                this.$axios.delete('/api/reminder?id=' + this.reminderSelected.id)
                     .then(function (response) {
                         if (response.data.data) {
                             this.$message({
                                 message: '删除成功',
                                 type: 'success'
                             });
+                            this.listReminders();
                         } else {
                             this.$message({
                                 message: '删除失败',
