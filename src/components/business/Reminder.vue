@@ -8,11 +8,16 @@
                     class="upload-demo"
                     drag
                     action="/api/common/picture"
-                    multiple>
+                >
                     <i class="el-icon-upload"></i>
                     <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
                     <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过10Mb</div>
                 </el-upload>
+            </el-form-item>
+            <el-form-item label="提醒主题">
+                <el-col :span="8">
+                    <el-input placeholder="请输入主题" v-model="form.title"></el-input>
+                </el-col>
             </el-form-item>
             <el-form-item label="提醒内容">
                 <el-col :span="8">
@@ -20,6 +25,17 @@
                               placeholder="请输入内容" v-model="form.content"></el-input>
                 </el-col>
             </el-form-item>
+            <el-form-item label="收件邮箱">
+                <el-col :span="8">
+                    <el-input placeholder="请输入收件邮箱" v-model="form.email"></el-input>
+                </el-col>
+            </el-form-item>
+            <el-form-item label="定时规则">
+                <el-col :span="8">
+                    <el-input placeholder="请输入定时规则" v-model="form.cron"></el-input>
+                </el-col>
+            </el-form-item>
+
 
             <el-form-item>
                 <el-button type="primary" @click="onSubmit">确定</el-button>
@@ -34,7 +50,12 @@
         data() {
             return {
                 form: {
-                    pictureUrl: ''
+                    content: null,
+                    pictureUrl: null,
+                    title: null,
+                    cron: null,
+                    email: null
+
                 },
                 rules: {}
             }
