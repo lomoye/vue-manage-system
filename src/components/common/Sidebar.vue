@@ -33,9 +33,22 @@
                     },
                     {
                         icon: 'el-icon-message',
-                        index: 'reminder',
-                        route: {path: '/reminder'},
-                        title: '提醒'
+                        index: '1',
+                        title: '提醒',
+                        subs: [
+                            {
+                                icon: 'el-icon-date',
+                                index: 'reminderList',
+                                route: {path: '/reminderList'},
+                                title: '提醒列表'
+                            },
+                            {
+                                icon: 'el-icon-date',
+                                index: 'reminder',
+                                route: {path: '/reminder'},
+                                title: '新增提醒'
+                            }
+                        ]
                     },
                     {
                         icon: 'el-icon-date',
