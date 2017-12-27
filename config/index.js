@@ -4,8 +4,8 @@ var path = require('path')
 module.exports = {
     build: {
         env: require('./prod.env'),
-        index: path.resolve(__dirname, 'C:/githubWorkspace/hours/hours-web/src/main/webapp/index.html'),
-        assetsRoot: path.resolve(__dirname, 'C:/githubWorkspace/hours/hours-web/src/main/webapp'),
+        index: path.resolve(__dirname, '/Users/yechangjun/Documents/workspace/hours/hours-web/src/main/resources/public/index.html'),
+        assetsRoot: path.resolve(__dirname, '/Users/yechangjun/Documents/workspace/hours/hours-web/src/main/resources/public'),
         assetsSubDirectory: 'static',
         assetsPublicPath: './',
         productionSourceMap: false,
