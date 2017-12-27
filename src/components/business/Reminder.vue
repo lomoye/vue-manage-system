@@ -89,6 +89,7 @@
                             message: '创建提醒事项成功',
                             type: 'success'
                         });
+                        this.$router.push({name: 'reminderList'});
                     }.bind(this))
             }
         }
